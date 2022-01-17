@@ -28,3 +28,24 @@ resource "aws_lambda_function" "funda-link-scraper" {
   package_type = "Image"
   image_uri = "${aws_ecr_repository.funda-link-scraper.repository_url}:latest"
 }
+
+resource "aws_lambda_function" "funda-link-cleaner" {
+  function_name = "funda-link-cleaner"
+  role = aws_iam_role.lambda_iam_role.arn
+  package_type = "Image"
+  image_uri = "${aws_ecr_repository.funda-link-cleaner.repository_url}:latest"
+}
+
+resource "aws_lambda_function" "funda-history-link-cleaner" {
+  function_name = "funda-history-link-cleaner"
+  role = aws_iam_role.lambda_iam_role.arn
+  package_type = "Image"
+  image_uri = "${aws_ecr_repository.funda-history-link-cleaner.repository_url}:latest"
+}
+
+resource "aws_lambda_function" "funda-model-trainer" {
+  function_name = "funda-model-trainer"
+  role = aws_iam_role.lambda_iam_role.arn
+  package_type = "Image"
+  image_uri = "${aws_ecr_repository.funda-model-trainer.repository_url}:latest"
+}
