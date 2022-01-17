@@ -17,8 +17,7 @@ resource "aws_iam_role" "lambda_iam_role" {
 EOF
 }
 
-resource "aws_iam_policy_attachment" "lambda_basic_execution_policy" {
-  name       = "lambda_basic_execution_policy"
+resource "aws_iam_role_policy_attachment" "lambda_basic_execution_policy" {
   role       = aws_iam_role.lambda_iam_role.name
   policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
 }
