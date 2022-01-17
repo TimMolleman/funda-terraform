@@ -20,4 +20,5 @@ resource "aws_iam_role" "lambda_iam_role" {
 resource "aws_lambda_function" "funda-link-scraper" {
   function_name = "funda-link-scraper"
   role = aws_iam_role.lambda_iam_role.arn
+  package_type = "Image"
 }
