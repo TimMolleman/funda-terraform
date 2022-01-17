@@ -22,12 +22,12 @@ jobs:
 
       - name: Terraform Init
         id: init
-        run: terraform init
+        run: terraform -chdir=terraform init
 
       - name: Terraform Plan
         id: plan
         if: github.event_name == 'push'
-        run: terraform plan -no-color
+        run: terraform -chdir=terraform plan -no-color
 
       - name: Terraform Plan Status
         if: steps.plan.outcome == 'failure'
@@ -35,4 +35,4 @@ jobs:
 
       - name: Terraform Apply
         if: github.ref == 'ref/head/main' && github.event_name == 'push'
-        run: terraform apply -auto-approve
+        run: terraform -chdir=terraform apply -auto-approve
