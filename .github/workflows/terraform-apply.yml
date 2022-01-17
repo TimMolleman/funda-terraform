@@ -26,7 +26,6 @@ jobs:
 
       - name: Terraform Plan
         id: plan
-        if: github.event_name == 'push'
         run: terraform -chdir=terraform plan -no-color
 
       - name: Terraform Plan Status
@@ -34,5 +33,4 @@ jobs:
         run: exit 1
 
       - name: Terraform Apply
-        if: github.ref == 'ref/head/main' && github.event_name == 'push'
         run: terraform -chdir=terraform apply -auto-approve
