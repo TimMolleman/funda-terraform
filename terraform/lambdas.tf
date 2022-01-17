@@ -21,4 +21,5 @@ resource "aws_lambda_function" "funda-link-scraper" {
   function_name = "funda-link-scraper"
   role = aws_iam_role.lambda_iam_role.arn
   package_type = "Image"
+  image_uri = "${aws_ecr_repository.funda-link-scraper.repository_url}:latest"
 }
