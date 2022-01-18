@@ -27,6 +27,7 @@ resource "aws_lambda_function" "funda-link-scraper" {
   role = aws_iam_role.lambda_iam_role.arn
   package_type = "Image"
   image_uri = "${aws_ecr_repository.funda-link-scraper.repository_url}:latest"
+  timeout = var.lambda
 }
 
 resource "aws_lambda_function" "funda-link-cleaner" {
@@ -34,6 +35,7 @@ resource "aws_lambda_function" "funda-link-cleaner" {
   role = aws_iam_role.lambda_iam_role.arn
   package_type = "Image"
   image_uri = "${aws_ecr_repository.funda-link-cleaner.repository_url}:latest"
+  timeout = var.lambda
 }
 
 resource "aws_lambda_function" "funda-history-link-cleaner" {
@@ -41,6 +43,7 @@ resource "aws_lambda_function" "funda-history-link-cleaner" {
   role = aws_iam_role.lambda_iam_role.arn
   package_type = "Image"
   image_uri = "${aws_ecr_repository.funda-history-link-cleaner.repository_url}:latest"
+  timeout = var.lambda
 }
 
 resource "aws_lambda_function" "funda-model-trainer" {
@@ -48,4 +51,13 @@ resource "aws_lambda_function" "funda-model-trainer" {
   role = aws_iam_role.lambda_iam_role.arn
   package_type = "Image"
   image_uri = "${aws_ecr_repository.funda-model-trainer.repository_url}:latest"
+  timeout = var.lambda
+}
+
+resource "aws_lambda_function" "funda-api" {
+  function_name = "funda-api"
+  role = aws_iam_role.lambda_iam_role.arn
+  package_type = "Image"
+  image_uri = "${aws_ecr_repository.funda-api.repository_url}:latest"
+  timeout = var.lambda
 }
