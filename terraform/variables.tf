@@ -1,4 +1,4 @@
 variable "lambda" {
-  type = string
+  type    = string
   default = "800"
 }
